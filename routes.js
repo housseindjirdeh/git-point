@@ -116,9 +116,9 @@ const sharedRoutes = {
   Issue: {
     screen: IssueScreen,
     navigationOptions: ({ navigation }) => ({
-      title: `#${navigation.state.params.issue
-        ? navigation.state.params.issue.number
-        : 'Issue'}`,
+      title: navigation.state.params.issue
+        ? `#${navigation.state.params.issue.number}`
+        : '',
     }),
   },
   IssueSettings: {

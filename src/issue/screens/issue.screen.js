@@ -152,12 +152,23 @@ class Issue extends Component {
   };
 
   setNavigationParams = () => {
-    const { navigation, repository } = this.props;
+    const { navigation, issue, repository } = this.props;
+    let params = null;
 
-    navigation.setParams({
-      userHasPushPermission:
-        repository.permissions.admin || repository.permissions.push,
-    });
+    if (navigation.state.params.issue) {
+      params = {
+        userHasPushPermission:
+          repository.permissions.admin || repository.permissions.push,
+      };
+    } else {
+      params = {
+        userHasPushPermission:
+          repository.permissions.admin || repository.permissions.push,
+        issue,
+      };
+    }
+
+    navigation.setParams(params);
   };
 
   postComment = body => {
